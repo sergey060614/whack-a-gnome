@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(container);
 
   let currentMaskIndex = null;
-  let intervalId = null;
+  let _intervalId = null;
   let maskImg = null;
 
   function placeMask() {
@@ -55,6 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(() => {
     placeMask();
-    intervalId = setInterval(moveMask, 1000);
+    _intervalId = setInterval(moveMask, 1000);
   }, 1000);
 });
