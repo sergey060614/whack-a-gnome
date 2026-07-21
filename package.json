@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "webpack serve --config webpack.config.cjs",
-    "build": "webpack --config webpack.config.cjs"
+    "build": "webpack --config webpack.config.cjs",
+     "test": "jest",
+    "lint": "eslint src/**/*.js" 
   },
   "keywords": [],
   "author": "",
