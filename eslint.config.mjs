@@ -3,6 +3,10 @@ import js from "@eslint/js";
 
 export default [
   {
+    ignores: ["node_modules/**", "dist/**", "docs/**", "coverage/**"]
+  },
+
+  {
     files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     ...js.configs.recommended,
     languageOptions: {
@@ -22,9 +26,5 @@ export default [
         ...globals.jest
       }
     }
-  },
-
-  {
-    ignores: ["node_modules/", "dist/", "coverage/"]
   }
 ];

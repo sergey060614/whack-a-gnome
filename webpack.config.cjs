@@ -6,7 +6,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "bundle.[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     clean: true,
     publicPath: "./",
     assetModuleFilename: "[hash][ext][query]"
@@ -37,7 +37,7 @@ module.exports = {
     new ESLintPlugin()
   ],
   devServer: {
-    static: "./dist",
+    static: "./docs",
     hot: true,
     open: true
   },
