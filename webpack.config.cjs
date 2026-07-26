@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -9,8 +8,8 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: './whack-a-gnome/',
-    assetModuleFilename: "assets/[name][ext]"
+    publicPath: "/",
+    assetModuleFilename: "[hash][ext][query]"
   },
   mode: "development",
   devtool: "inline-source-map",
@@ -35,16 +34,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html"
     }),
-    new ESLintPlugin(),
-    new CopyPlugin({
-  patterns: [
-    { 
-      from: 'src/assets',   
-      to: 'assets'         
-    }
-  ]
-}),],
-
+    new ESLintPlugin()
+  ],
   devServer: {
     static: "./dist",
     hot: true,
