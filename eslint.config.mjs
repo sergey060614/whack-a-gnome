@@ -1,28 +1,30 @@
-// eslint.config.mjs
-import js from '@eslint/js';
-import globals from 'globals';
+import globals from "globals";
+import js from "@eslint/js";
 
 export default [
-  js.configs.recommended,
-  
   {
-    files: ['**/*.js'],
-    
+    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    ...js.configs.recommended,
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: {
-        ...globals.browser
+        ...globals.browser,
+        ...globals.node
       }
-    },
-
-    rules: {
-      'no-console': 'off', 
-      'no-unused-vars': [
-        'error', 
-        { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }
-      ]
     }
+  },
+
+  {
+    files: ["**/__tests__/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
+    }
+  },
+
+  {
+    ignores: ["node_modules/", "dist/", "coverage/"]
   }
 ];
