@@ -1,0 +1,1 @@
+[![Live Demo](https://img.shields.io/badge/-Live%20Demo-blue?style=flat-square&logo=github)](https://sergey060614.github.io/whack-a-gnome/)
