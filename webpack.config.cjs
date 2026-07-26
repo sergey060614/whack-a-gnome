@@ -8,7 +8,7 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/",
+    publicPath: "./",
     assetModuleFilename: "[hash][ext][query]"
   },
   mode: "development",
