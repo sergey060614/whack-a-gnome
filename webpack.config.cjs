@@ -9,6 +9,7 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+    publicPath: './whack-a-gnome/',
     assetModuleFilename: "assets/[name][ext]"
   },
   mode: "development",
