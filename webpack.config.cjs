@@ -36,9 +36,14 @@ module.exports = {
     }),
     new ESLintPlugin(),
     new CopyPlugin({
-      patterns: [{ from: "assets", to: "assets" }]
-    })
-  ],
+  patterns: [
+    { 
+      from: 'src/assets',   
+      to: 'assets'         
+    }
+  ]
+}),],
+
   devServer: {
     static: "./dist",
     hot: true,
