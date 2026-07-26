@@ -21,7 +21,7 @@ body {
 }
 
 .cell {
-  background-color: #eaeaea;
+  background-color: #0a0808;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
