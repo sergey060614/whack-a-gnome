@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(container);
 
   let currentMaskIndex = null;
-  let _intervalId = null;
+  let intervalId = null;
   let maskImg = null;
   let isPageVisible = true;
 
@@ -40,35 +40,36 @@ document.addEventListener("DOMContentLoaded", () => {
       maskImg = new Image();
       maskImg.src = maskSrc;
       maskImg.classList.add("mask");
-
-      maskImg.onload = () => {
-        if (targetIndex !== null) {
-          container.querySelectorAll(".cell")[targetIndex].appendChild(maskImg);
-        }
-      };
     }
 
     const cells = Array.from(container.querySelectorAll(".cell"));
 
-    if (maskImg.parentNode) {
-      maskImg.remove();
-    }
     cells[targetIndex].appendChild(maskImg);
-
     currentMaskIndex = targetIndex;
   }
 
   function moveMask() {
-    if (!isPageVisible) return;
+    if (!isPageVisible || currentMaskIndex === null) return;
 
-    const cellsCount = container.querySelectorAll(".cell").length;
     let nextIndex;
-
     do {
-      nextIndex = Math.floor(Math.random() * cellsCount);
-    } while (nextIndex === currentMaskIndex && cellsCount > 1);
+      nextIndex = Math.floor(Math.random() * TOTAL_CELLS);
+    } while (nextIndex === currentMaskIndex);
 
     placeMask(nextIndex);
+  }
+
+  function startGameLoop() {
+    if (!intervalId) {
+      intervalId = setInterval(moveMask, 1000);
+    }
+  }
+
+  function stopGameLoop() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
   }
 
   function handleCellClick(event) {
@@ -92,17 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       isPageVisible = false;
-      clearInterval(_intervalId);
-      _intervalId = null;
+      stopGameLoop();
     } else {
       isPageVisible = true;
-      _intervalId = setInterval(moveMask, 1000);
+      startGameLoop();
     }
   });
 
-  setTimeout(() => {
-    const initialIndex = Math.floor(Math.random() * TOTAL_CELLS);
-    placeMask(initialIndex);
-    _intervalId = setInterval(moveMask, 1000);
-  }, 1000);
+  const initialIndex = Math.floor(Math.random() * TOTAL_CELLS);
+  placeMask(initialIndex);
+  startGameLoop();
 });

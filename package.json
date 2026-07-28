@@ -6,11 +6,11 @@
   "type": "module",
   "scripts": {
     "start": "webpack serve --config webpack.config.cjs",
-  "build": "webpack --mode production",
-  "test": "jest",
-  "test:watch": "jest --watch",
-  "lint": "eslint . --ext js,jsx,cjs,mjs" 
-},
+    "build": "webpack --mode production",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext js,jsx,cjs,mjs"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

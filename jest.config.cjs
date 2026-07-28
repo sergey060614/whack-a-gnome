@@ -1,16 +1,11 @@
 const config = {
-  testEnvironment: "jsdom",
-  roots: ["<rootDir>"],
-  testMatch: ["**/__tests__/**/*.test.js?(x)"],
-
+   testEnvironment: 'jsdom',
+  roots: ['<rootDir>/'], 
   transform: {
-    "^.+\\.[jt]sx?$": "babel-jest"
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.(css|scss)$': '<rootDir>/jest-css-transform.js',
+    '^.+\\.(png|jpg|jpeg|gif|svg)$': '<rootDir>/jest-file-transform.js'
   },
-
-  moduleNameMapper: {
-    "\\.(png|jpe?g|gif|svg)$": "<rootDir>/__mocks__/fileMock.js",
-    "\\.css$": "<rootDir>/__mocks__/styleMock.js"
-  }
 };
 
 module.exports = config;
